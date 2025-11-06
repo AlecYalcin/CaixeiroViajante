@@ -2,7 +2,6 @@ import sys
 from core import (
     Point,
     Grid,
-    euclidean_distance,
     total_distance,
 )
 
@@ -32,16 +31,14 @@ def _permutation(
     # Devolvendo os resultados para a próxima iteração
     return results
 
-def traveler_permutations(
-    grid: Grid,
-) -> list[Point]:
+def traveler_permutations(points: list[Point]) -> list[Point]:
     """ 
     Algoritmo que realiza a permutação de todos os pontos e encontra aquele com a menor distância euclidiana seguindo
     o camino do caixeiro viajante.
     """
 
     # Gerando permutações
-    permutations: list[list[Point]] = _permutation(grid.points)
+    permutations: list[list[Point]] = _permutation(points)
 
     # Percorrendo permutações
     best_distance, best_permutation = total_distance(permutations[0]), permutations[0]
@@ -51,6 +48,7 @@ def traveler_permutations(
             best_distance = current_distance
             best_permutation = permutation.copy()
     
+    best_permutation = best_permutation.append(best_permutation[0])
     return best_permutation
 
 if __name__ == "__main__":
@@ -68,6 +66,6 @@ if __name__ == "__main__":
 
             case str():
                 grid = Grid.import_maps(parameter)[0]
-        best = traveler_permutations(grid)
+        best = traveler_permutations(grid.points)
         print(list(map(str, best)))
                 
