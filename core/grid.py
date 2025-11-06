@@ -136,9 +136,7 @@ if __name__ == "__main__":
             "<archive> - arquivo de importação"
         )
     else:
-        print(sys.argv[1])
-        parameter = eval(sys.argv[1])
-        
+        parameter = eval(sys.argv[1])        
         match parameter:
             case int():     
                 # Testando geração aleatória de GRID
@@ -148,7 +146,6 @@ if __name__ == "__main__":
                 # Testando reconhecimento de GRID a partir de uma lista de pontos
                 grid2 = Grid(grid.points)
                 # grid2.show()
-
             case str():
                 grids = Grid.import_maps(parameter)
                 for i, g in enumerate(grids):

@@ -7,11 +7,11 @@ from core import (
 )
 
 def _permutation(
-    symbols: list,
+    symbols: list[any],
     index: int = 0, 
     memory: list = ...,
     results: list = ...,
-) -> None:
+) -> list[list[any]]:
     """ Algoritmo de permutação que gera todas as possibilidades dentre os símbolos passados. """
 
     # Inicialização memória
@@ -56,13 +56,18 @@ def traveler_permutations(
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print(
-            "./grid.py <n>\n"
+            "./grid.py <n> or <archive>\n"
             "<n> - quantidade de pontos na grid "
+            "<archive> - arquivo de importação"
         )
     else:
-        # Geração aleatória de GRID
-        grid = Grid.generate(int(sys.argv[1]))
+        parameter = eval(sys.argv[1])
+        match parameter:
+            case int():     
+                grid = Grid.generate(int(sys.argv[1]))
 
-        # Realizando permutações
-        best_permutation = traveler_permutations(grid)
-        [print(p) for p in best_permutation]
+            case str():
+                grid = Grid.import_maps(parameter)[0]
+        best = traveler_permutations(grid)
+        print(list(map(str, best)))
+                
