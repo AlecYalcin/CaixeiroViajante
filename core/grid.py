@@ -106,18 +106,50 @@ class Grid():
             n = n -1
 
         return cls(points)
+    
+    @classmethod
+    def import_maps(cls, arq: str) -> list["Grid"]:
+        """ Método de importação de Grid com base em um arquivo. """
+
+        # Lendo as linhas do arquivo
+        with open(arq, "r") as f: 
+            lines = f.readlines()
+
+        # Transformando cada linha em uma lista
+        lists = [eval(l.strip()) for l in lines]
+
+        # Transformando cada lista em uma lista de pontos 
+        grids: list[Grid] = []
+        for points in lists:
+            grids.append(Grid([
+                Point(longitude, latitude, f"P{index}") 
+                for index, (latitude, longitude) in enumerate(points)
+            ]))
+
+        return grids
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print(
-            "./grid.py <n>\n"
+            "./grid.py <n> or <archive>\n"
             "<n> - quantidade de pontos na grid "
+            "<archive> - arquivo de importação"
         )
     else:
-        # Testando geração aleatória de GRID
-        grid = Grid.generate(int(sys.argv[1]))
-        grid.show()
+        print(sys.argv[1])
+        parameter = eval(sys.argv[1])
+        
+        match parameter:
+            case int():     
+                # Testando geração aleatória de GRID
+                grid = Grid.generate(int(sys.argv[1]))
+                # grid.show()
 
-        # Testando reconhecimento de GRID a partir de uma lista de pontos
-        grid2 = Grid(grid.points)
-        grid2.show()
+                # Testando reconhecimento de GRID a partir de uma lista de pontos
+                grid2 = Grid(grid.points)
+                # grid2.show()
+
+            case str():
+                grids = Grid.import_maps(parameter)
+                for i, g in enumerate(grids):
+                    print(f"Grid[{i}: {[str(p) for p in g.points]}")
