@@ -109,7 +109,8 @@ def group_intersection_heuristic(points: list[Point], threshold: float = 1.0, in
     """
 
     # Selecionando o primeiro ponto
-    first_point = points.pop(initial_index or _select_the_best_starter(points))
+    choosen_idx = initial_index or _select_the_best_starter(points)
+    first_point = points.pop(choosen_idx)
     solution = [first_point]
 
     # Alocando o restante dos pontos para o primeiro grupo geral
