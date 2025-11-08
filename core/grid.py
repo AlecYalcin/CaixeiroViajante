@@ -79,6 +79,8 @@ class Grid():
             print(f"Point {p.name} -> Latitude: {p.latitude:.2f}, Longitude: {p.longitude:.2f}")
         print(f"Total Distance: {self.total_distance}")
 
+    def __str__(self) -> None:
+        return f"Points: {[str(p) for p in self.points]}"
 
     @classmethod
     def generate(cls, n: int) -> "Grid":
@@ -129,24 +131,16 @@ class Grid():
         return grids
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         print(
-            "./grid.py <n> or <archive>\n"
+            "./grid.py <n> <archive>"
             "<n> - quantidade de pontos na grid "
-            "<archive> - arquivo de importação"
+            "<archive> - nome do arquivo para salvar"
         )
     else:
-        parameter = eval(sys.argv[1])        
-        match parameter:
-            case int():     
-                # Testando geração aleatória de GRID
-                grid = Grid.generate(int(sys.argv[1]))
-                # grid.show()
-
-                # Testando reconhecimento de GRID a partir de uma lista de pontos
-                grid2 = Grid(grid.points)
-                # grid2.show()
-            case str():
-                grids = Grid.import_maps(parameter)
-                for i, g in enumerate(grids):
-                    print(f"Grid[{i}: {[str(p) for p in g.points]}")
+        n = int(sys.argv[1])
+        archive = sys.argv[2]
+        with open(archive, "w") as f:
+            for _ in range(10):
+                grid = Grid.generate(n)
+                f.write(f"{[(p.latitude, p.longitude) for p in grid.points]}\n")

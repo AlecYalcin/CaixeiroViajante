@@ -15,11 +15,9 @@ def n_group_intersection_heuristic(points: list[Point]) -> list[Point]:
     # Calculando a distância de todas as soluções
     best = group_intersection_heuristic(points.copy(), initial_index=0)
     best_distance = total_distance(best)
-    print(best_distance)
     for i in range(1, len(points)):
         solution = group_intersection_heuristic(points.copy(), initial_index=i)
         distance = total_distance(solution)
-        print(distance)
         if distance < best_distance:
             best, best_distance = solution, distance
     return best
