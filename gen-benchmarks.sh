@@ -1,7 +1,7 @@
 #!/bin/bash
 
 help="SYNTAX:
- ./gen-benchmarks.sh <start-file> <end-file> <algorithm>
+ $0 <start-file> <end-file> <algorithm>
   <start-file> - start benchmark-n-<start-file> at core/maps
   <end-file> - end benchmark-n-<end-file> at core/maps
   <algorithm> - selected algorithm at algorithms/
