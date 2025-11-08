@@ -1,11 +1,6 @@
 import random
 import sys
-from core import (
-    Point,
-    Grid,
-    euclidean_distance,
-    total_distance,
-)
+from core import *
 
 def nearest_neighbor_heuristic(points: list[Point], initial_index: int | None = None) -> list[Point]:
     """
