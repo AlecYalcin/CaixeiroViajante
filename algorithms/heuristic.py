@@ -4,6 +4,7 @@ from core import (
     Point,
     Grid,
     euclidean_distance,
+    total_distance,
 )
 
 def nearest_neighbor_heuristic(points: list[Point], initial_index: int | None = None) -> list[Point]:
@@ -50,4 +51,4 @@ if __name__ == "__main__":
             case str():
                 grid = Grid.import_maps(parameter)[0]
         best = nearest_neighbor_heuristic(grid.points)
-        print(list(map(str, best)))
+        print(total_distance(best))

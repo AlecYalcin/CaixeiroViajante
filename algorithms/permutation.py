@@ -45,10 +45,9 @@ def traveler_permutations(points: list[Point]) -> list[Point]:
     for permutation in permutations[1:]:
         current_distance = total_distance(permutation)
         if current_distance < best_distance:
-            best_distance = current_distance
-            best_permutation = permutation.copy()
+            best_permutation, best_distance = permutation, current_distance
     
-    best_permutation = best_permutation.append(best_permutation[0])
+    best_permutation.append(best_permutation[0])
     return best_permutation
 
 if __name__ == "__main__":
@@ -63,9 +62,7 @@ if __name__ == "__main__":
         match parameter:
             case int():     
                 grid = Grid.generate(int(sys.argv[1]))
-
             case str():
                 grid = Grid.import_maps(parameter)[0]
         best = traveler_permutations(grid.points)
-        print(list(map(str, best)))
-                
+        print(total_distance(best))                
