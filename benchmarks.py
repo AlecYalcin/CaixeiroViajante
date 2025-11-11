@@ -7,7 +7,7 @@ from typing import Callable
 USAGE = """
     Usage:
         python3 benchmarks.py <algorithm> <benchmark-file> <result-type>
-            <algorithm>         -> 0: permutation, 1: nearest_neighbor, 2: n_nearest_neighbor, 3: group_intersection, 4: n_group_intersection
+            <algorithm>         -> 0: permutation, 1: nearest_neighbor, 2: n_nearest_neighbor, 3: group_intersection, 4: n_group_intersection. 5: genetic
             <benchmark-file>    -> file location in .txt format with n lines for testing. See 'core/maps/benchmark-n-4.txt' for example
             <result-type>       -> d: mean_distance, t: mean_time
     Exit:
@@ -29,6 +29,8 @@ def select_algorithm(code: int) -> Callable:
             return group_intersection_heuristic
         case "my_heuristic_n":
             return n_group_intersection_heuristic
+        case "genetic":
+            return genetic_heuristic
         case _:
             print(USAGE)
             raise Exception("The selected algorithm isn't valid.")

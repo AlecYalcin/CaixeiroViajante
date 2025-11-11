@@ -9,6 +9,7 @@ HEURISTIC="heuristic/heuristic-benchmarks.txt"
 HEURISTIC_N="heuristic_n/heuristic_n-benchmarks.txt"
 MY_HEURISTIC="my_heuristic/my_heuristic-benchmarks.txt"
 MY_HEURISTIC_N="my_heuristic_n/my_heuristic_n-benchmarks.txt"
+GENETIC="genetic/genetic-benchmarks.txt"
 TITLE = TYPE . " benchmarks comparison"
 
 if (TYPE eq "distance") {
@@ -35,11 +36,13 @@ if (INCLUDE_P == 1) {
         HEURISTIC       using 1:Y_COL every ::START::END with linespoints lw 2 pt 7 title "Heuristic", \
         HEURISTIC_N     using 1:Y_COL every ::START::END with linespoints lw 2 pt 7 title "Heuristic N", \
         MY_HEURISTIC    using 1:Y_COL every ::START::END with linespoints lw 2 pt 7 title "My Heuristic", \
-        MY_HEURISTIC_N  using 1:Y_COL every ::START::END with linespoints lw 2 pt 7 title "My Heuristic N"
+        MY_HEURISTIC_N  using 1:Y_COL every ::START::END with linespoints lw 2 pt 7 title "My Heuristic N", \
+        GENETIC         using 1:Y_COL every ::START::END with linespoints lw 2 pt 7 title "Genetic"
 } else {
     plot \
         HEURISTIC       using 1:Y_COL every ::START::END with linespoints lw 2 pt 7 title "Heuristic", \
         HEURISTIC_N     using 1:Y_COL every ::START::END with linespoints lw 2 pt 7 title "Heuristic N", \
         MY_HEURISTIC    using 1:Y_COL every ::START::END with linespoints lw 2 pt 7 title "My Heuristic", \
-        MY_HEURISTIC_N  using 1:Y_COL every ::START::END with linespoints lw 2 pt 7 title "My Heuristic N"
+        MY_HEURISTIC_N  using 1:Y_COL every ::START::END with linespoints lw 2 pt 7 title "My Heuristic N", \
+        GENETIC         using 1:Y_COL every ::START::END with linespoints lw 2 pt 7 title "Genetic"
 }

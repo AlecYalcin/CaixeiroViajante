@@ -3,3 +3,4 @@ from .heuristic import nearest_neighbor_heuristic
 from .heuristic_n import n_nearest_neighbor_heuristic
 from .my_heuristic import group_intersection_heuristic
 from .my_heuristic_n import n_group_intersection_heuristic
+from .genetic import genetic_heuristic

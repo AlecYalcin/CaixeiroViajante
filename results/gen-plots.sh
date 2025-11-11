@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Gráficos de 4 a 9
-benchmarks="permutation heuristic heuristic_n my_heuristic my_heuristic_n"
+benchmarks="permutation heuristic heuristic_n my_heuristic my_heuristic_n genetic"
 for valor in $benchmarks; do
     start=0
     end=6
@@ -13,7 +13,7 @@ for valor in $benchmarks; do
 done
 
 # Gráficos de 10 a 70
-benchmarks="heuristic heuristic_n my_heuristic my_heuristic_n"
+benchmarks="heuristic heuristic_n my_heuristic my_heuristic_n genetic"
 for valor in $benchmarks; do
     start=6
     end=13

@@ -58,7 +58,10 @@ if __name__ == "__main__":
             "<archive> - arquivo de importação"
         )
     else:
-        parameter = eval(sys.argv[1])
+        try:
+            parameter = eval(sys.argv[1])
+        except Exception:
+            parameter = sys.argv[1]
         match parameter:
             case int():     
                 grid = Grid.generate(int(sys.argv[1]))
